@@ -46,10 +46,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\GUI\FPSCounter.cs" />
      <Compile Include="Assets\GUI\Menu.cs" />
      <Compile Include="Assets\GUI\MenuSim.cs" />
      <Compile Include="Assets\SPH\Boundary.cs" />
-     <Compile Include="Assets\SPH\FPSCounter.cs" />
      <Compile Include="Assets\SPH\FluidParticle.cs" />
      <Compile Include="Assets\SPH\Poly6.cs" />
      <Compile Include="Assets\SPH\SPH.cs" />
