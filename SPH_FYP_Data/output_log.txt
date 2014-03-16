@@ -1,37 +1,72 @@
 Initialize engine version: 4.3.4f1 (e444f76e01cd)
 GfxDevice: creating device client; threaded=1
 Direct3D:
-    Version:  Direct3D 9.0c [nvumdshimx.dll 9.18.13.3489]
-    Renderer: Intel(R) HD Graphics Family
-    Vendor:   Intel
-    VRAM:     1972 MB (via DXGI)
+    Version:  Direct3D 9.0c [nvd3dumx.dll 9.18.13.3523]
+    Renderer: NVIDIA GeForce GTX 770
+    Vendor:   NVIDIA
+    VRAM:     1990 MB (via DXGI)
     Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
-Loading C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
-Platform assembly: C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
-Loading C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
-Platform assembly: C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
-Loading C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
-- Completed reload, in  0.051 seconds
-desktop: 1366x768 59Hz; virtual: 1366x768 at 0,0
+Platform assembly: E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+- Completed reload, in  0.043 seconds
+desktop: 1920x1080 60Hz; virtual: 3520x1200 at 0,0
 <RI> Initializing input.
-XInput1_3.dll not found.
 <RI> Input initialized.
-Platform assembly: C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\System.Core.dll (this message is harmless)
-UnloadTime: 0.573874 ms
+Platform assembly: E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\SPH_FYP_Data\Managed\System.Core.dll (this message is harmless)
+UnloadTime: 0.525804 ms
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 245.
-Total: 1.737689 ms (FindLiveObjects: 0.033914 ms CreateObjectMapping: 0.027667 ms MarkObjects: 0.273996 ms  DeleteObjects: 0.048641 ms)
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 263.
+Total: 0.569646 ms (FindLiveObjects: 0.011410 ms CreateObjectMapping: 0.006906 ms MarkObjects: 0.087083 ms  DeleteObjects: 0.163056 ms)
 
-UnloadTime: 0.489087 ms
+UnloadTime: 10.677040 ms
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 197.
-Total: 1.310183 ms (FindLiveObjects: 0.013387 ms CreateObjectMapping: 0.012941 ms MarkObjects: 0.164219 ms  DeleteObjects: 0.446694 ms)
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 221.
+Total: 1.132085 ms (FindLiveObjects: 0.016515 ms CreateObjectMapping: 0.013512 ms MarkObjects: 0.217708 ms  DeleteObjects: 0.204796 ms)
+
+UnloadTime: 0.454035 ms
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 221.
+Total: 0.780148 ms (FindLiveObjects: 0.012311 ms CreateObjectMapping: 0.010510 ms MarkObjects: 0.149543 ms  DeleteObjects: 0.118013 ms)
+
+UnloadTime: 10.248230 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 227.
+Total: 0.962423 ms (FindLiveObjects: 0.016515 ms CreateObjectMapping: 0.013212 ms MarkObjects: 0.195187 ms  DeleteObjects: 0.104500 ms)
+
+UnloadTime: 0.467248 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 277.
+Total: 0.622497 ms (FindLiveObjects: 0.013212 ms CreateObjectMapping: 0.012612 ms MarkObjects: 0.187379 ms  DeleteObjects: 0.085281 ms)
+
+UnloadTime: 10.949702 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 283.
+Total: 1.003562 ms (FindLiveObjects: 0.019819 ms CreateObjectMapping: 0.014714 ms MarkObjects: 0.230020 ms  DeleteObjects: 0.095791 ms)
+
+UnloadTime: 11.581207 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 286.
+Total: 1.130884 ms (FindLiveObjects: 0.021620 ms CreateObjectMapping: 0.015014 ms MarkObjects: 0.274463 ms  DeleteObjects: 0.153747 ms)
+
+UnloadTime: 9.826924 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 239.
+Total: 1.134488 ms (FindLiveObjects: 0.018317 ms CreateObjectMapping: 0.014413 ms MarkObjects: 0.293381 ms  DeleteObjects: 0.157651 ms)
 

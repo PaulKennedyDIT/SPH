@@ -6,13 +6,12 @@ using System.Collections.Generic;
 
 public class SPHSystem : MonoBehaviour 
 {
-	private ParticleSystem.Particle[] points;
+	public List<GameObject> spherelist = new List<GameObject> ();
+	private GameObject sphere;
 	private Boundary bounds;
 	private SPH sph;
-	private float increment;
 	private FluidParticle fp;
 	private float UpdateTime = 0.06f;
-	private int i;
 
 	public SPHSystem()
 	{
@@ -35,26 +34,26 @@ public class SPHSystem : MonoBehaviour
 		
 	private void CreatePoints () 
 	{
-		points = new ParticleSystem.Particle[Menu.ParticleResolution * Menu.ParticleResolution];
-		increment = 1f / (Menu.ParticleResolution);
-		i = 0;
 		for (int x = 0; x < Menu.ParticleResolution; x++) 
 		{
 			for (int z = 0; z < Menu.ParticleResolution; z++) 
 			{
-				points[i].position = new Vector3(x * increment,transform.position.y, z * increment);
-				points[i].size =Menu.Size;
-				sph.CreateFluids(points[i].position);
-				i++;
+				sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+				sphere.AddComponent<Rigidbody>();
+				sphere.transform.position = new Vector3((x + transform.position.x) * Menu.Size,transform.position.y, (z + transform.position.z) * Menu.Size);
+				sphere.transform.localScale = new Vector3(Menu.Size,Menu.Size,Menu.Size);
+				sphere.rigidbody.mass = fp.Mass;
+				spherelist.Add(sphere);
+				sph.CreateFluids(sphere.transform.position);
 			}
 		}
 	}
 	
 	public void Calculate()
 	{
-		particleSystem.GetParticles (points);
 		for (int k = 0; k < sph.particleList.Count; k++) 
 		{
+			sph.particleList [k].Position= spherelist[k].transform.position;
 			sph.particleList [k].Update (UpdateTime);
 
 			sph.CalculateDensities (k);
@@ -62,23 +61,20 @@ public class SPHSystem : MonoBehaviour
 
 			for (int n =0; n < sph.particleList.Count; n++) 
 			{
+				sph.particleList [n].Position= spherelist[n].transform.position;
 				sph.dist = sph.particleList[k].Position - sph.particleList[n].Position;
 				sph.distLen = Vector3.Distance(sph.particleList[k].Position,sph.particleList[n].Position);
 
-				if(sph.distLen < 0.25f)
+				if(sph.distLen < sph.particleList[k].Size)
 				{
 					sph.CheckParticleDistance (k, n);
 					sph.CalculateForces (k, n);
-					points[k].position = sph.particleList [k].Position;
-					points[n].position = sph.particleList [n].Position;
+					spherelist[k].rigidbody.AddForce(sph.particleList[k].Force);
+					spherelist[n].rigidbody.AddForce(sph.particleList[n].Force);
+					spherelist[n].transform.position = sph.particleList [n].Position;
 				}
 			}
-
-
-			sph.bounds.Update(ref sph.particleList);
-			sph.bounds.CheckContainerCollision (k, sph.particleList[k].Size);
-
-			particleSystem.SetParticles (points, sph.particleList.Count);
+			spherelist[k].transform.position = sph.particleList [k].Position;
 		}
 	}
 
