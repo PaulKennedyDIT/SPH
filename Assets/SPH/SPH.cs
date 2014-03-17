@@ -32,7 +32,7 @@ public class SPH
 		SKPressure = new Spiky (fp.Size);
 		SKViscosity = new Viscosity (fp.Size);
 	
-		minDist = Menu.Size * 1.1f;
+		minDist = Menu.Size * 1.0f;
 		minDistSq = minDist * minDist;
 	}
 
@@ -56,7 +56,7 @@ public class SPH
 		if(particleList[indexOther].Density > Mathf.Epsilon && particleList[indexPart] != particleList[indexOther])
 		{
 			distLen = Vector3.Distance(particleList[indexOther].Position,particleList[indexPart].Position);
-			if(distLen < (Menu.Size * 1.1f))
+			if(distLen < (Menu.Size * 1.0f))
 			{
 				// Calculate pressure forces
 				scalar = particleList[indexOther].Mass * (particleList[indexPart].Pressure + particleList[indexOther].Pressure) / (2.0f * particleList[indexOther].Density);

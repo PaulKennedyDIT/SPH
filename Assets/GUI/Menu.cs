@@ -25,7 +25,7 @@ public class Menu : MonoBehaviour
 			DisplayMainMenu (new Rect (Screen.width / 1.4f * 0.4f, Screen.height / 4.0f, Screen.width / 1.1f * 0.4f, Screen.height));
 		}
 
-		if(Application.loadedLevel == 1 || Application.loadedLevel == 2 || Application.loadedLevel == 3 || Application.loadedLevel == 4 || Application.loadedLevel == 5)
+		if(Application.loadedLevel == 1 || Application.loadedLevel == 2 || Application.loadedLevel == 3 || Application.loadedLevel == 4 || Application.loadedLevel == 5 || Application.loadedLevel == 6)
 		{
 			DisplaySimulationMenu(new Rect(10,20,Screen.width/1.1f * 0.4f,Screen.height/2f));
 		}
@@ -68,6 +68,11 @@ public class Menu : MonoBehaviour
 				if (GUILayout.Button("Begin Simulation 5"))
 				{
 					Application.LoadLevel(5);
+				}
+
+				if (GUILayout.Button("Begin Simulation 6"))
+				{
+					Application.LoadLevel(6);
 				}
 			}
 			GUILayout.EndHorizontal();

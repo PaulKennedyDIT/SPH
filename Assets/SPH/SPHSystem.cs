@@ -34,9 +34,9 @@ public class SPHSystem : MonoBehaviour
 			{
 				sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 				sphere.AddComponent<Rigidbody>();
-				sphere.transform.position = new Vector3((x + (transform.position.x - fp.Size * 2)),transform.position.y, (z + (transform.position.z - fp.Size * 2)));
+				sphere.transform.position = new Vector3((x + (transform.position.x - fp.Size * 2.0f)),transform.position.y, (z + (transform.position.z - fp.Size * 2.0f)));
 				sphere.transform.localScale = new Vector3(Menu.Size,Menu.Size,Menu.Size);
-				sphere.renderer.sharedMaterial= Resources.Load("water", typeof(Material)) as Material;
+				//sphere.renderer.sharedMaterial= Resources.Load("water", typeof(Material)) as Material;
 				sphere.rigidbody.mass = fp.Mass;
 				sphere.tag = "fluid";
 				spherelist.Add(sphere);
@@ -67,11 +67,9 @@ public class SPHSystem : MonoBehaviour
 
 					spherelist[k].rigidbody.AddForce(sph.particleList[k].Force);
 					spherelist[n].rigidbody.AddForce(sph.particleList[n].Force);
-					//spherelist[n].rigidbody.velocity += sph.particleList [n].Velocity;
 					spherelist[n].transform.position = sph.particleList [n].Position;
 				}
 			}
-			//spherelist[k].rigidbody.velocity += sph.particleList [k].Velocity;
 			spherelist[k].transform.position = sph.particleList [k].Position;
 		}
 	}
