@@ -1,0 +1,112 @@
+# Blender3D MTL File: COS.blend
+# Material Count: 10
+newmtl Material.001_007seanconnery_watch.
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.037647 0.037647 0.037647
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd 007seanconnery_watch.png
+
+
+newmtl Material.008_007seanconnery_eyelas
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.037647 0.037647 0.037647
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd 007seanconnery_eyelash.png
+
+
+newmtl Material_007seanconnery_eyes.p
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.037647 0.037647 0.037647
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd 007seanconnery_eyes.png
+
+
+newmtl Material.004_007senconnery_teeth.p
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.037647 0.037647 0.037647
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd 007senconnery_teeth.png
+
+
+newmtl Material.007_007sc_greysuit.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.207059 0.207059 0.207059
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd 007sc_greysuit.png
+
+
+newmtl Material.006_007seanc_tie.png.001
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.207059 0.207059 0.207059
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd 007seanc_tie.png
+
+
+newmtl Material.002_007sc_tongue.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.037647 0.037647 0.037647
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd 007sc_tongue.png
+
+
+newmtl Material.009_007seanconnery_hair.p
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.037647 0.037647 0.037647
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd 007seanconnery_hair.png
+
+
+newmtl Material.005_007seanconnery_hand.p
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.037647 0.037647 0.037647
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd 007seanconnery_hand.png
+
+
+newmtl Material.003_007seanconnery_face.p
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.037647 0.037647 0.037647
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd 007seanconnery_face.png
+
+

@@ -25,7 +25,7 @@ public class Menu : MonoBehaviour
 			DisplayMainMenu (new Rect (Screen.width / 1.4f * 0.4f, Screen.height / 4.0f, Screen.width / 1.1f * 0.4f, Screen.height));
 		}
 
-		if(Application.loadedLevel == 1 || Application.loadedLevel == 2)
+		if(Application.loadedLevel == 1 || Application.loadedLevel == 2 || Application.loadedLevel == 3 || Application.loadedLevel == 4 || Application.loadedLevel == 5)
 		{
 			DisplaySimulationMenu(new Rect(10,20,Screen.width/1.1f * 0.4f,Screen.height/2f));
 		}
@@ -35,24 +35,14 @@ public class Menu : MonoBehaviour
 	{
 		GUILayout.BeginArea(ScreenSize);
 		{
-			GUILayout.BeginVertical("box"); // also can put width in here
-			{	
-				GUILayout.Label("Particle size:"+ Size);
-				Size = GUILayout.HorizontalSlider(Size, 0.2f, 1.0f);
-				
-				GUILayout.Label("Number of Particles:"+ ParticleResolution * ParticleResolution);
-				ParticleResolution = (int)GUILayout.HorizontalSlider(ParticleResolution, 10, 22);
-			}
-			GUILayout.EndVertical();
-			
 			GUILayout.BeginHorizontal();
 			{
-				if (GUILayout.Button("Simulation 1")) // also can put width here
+				if (GUILayout.Button("Begin Simulation 1")) 
 				{
 					Application.LoadLevel(1);
 				}
 
-				if (GUILayout.Button("Simulation 2")) // also can put width here
+				if (GUILayout.Button("Begin Simulation 2")) 
 				{
 					Application.LoadLevel(2);
 				}
@@ -61,13 +51,36 @@ public class Menu : MonoBehaviour
 
 			GUILayout.BeginHorizontal();
 			{
-				if (GUILayout.Button ("Default Values")) 
+				if (GUILayout.Button("Begin Simulation 3"))
 				{
-					ParticleResolution = 19;
-					Viscosity = 1.002f;
-					Size = 1.0f;
+					Application.LoadLevel(3);
 				}
-				
+
+				if (GUILayout.Button("Begin Simulation 4"))
+				{
+					Application.LoadLevel(4);
+				}
+			}
+			GUILayout.EndHorizontal();
+
+			GUILayout.BeginHorizontal();
+			{
+				if (GUILayout.Button("Begin Simulation 5"))
+				{
+					Application.LoadLevel(5);
+				}
+			}
+			GUILayout.EndHorizontal();
+
+			GUILayout.BeginVertical("box"); 
+			{	
+				GUILayout.Label("Number of Particles:"+ ParticleResolution * ParticleResolution);
+				ParticleResolution = (int)GUILayout.HorizontalSlider(ParticleResolution, 10, 22);
+			}
+			GUILayout.EndVertical();
+
+			GUILayout.BeginHorizontal();
+			{
 				if (GUILayout.Button ("Exit")) 
 				{
 					Application.Quit();
@@ -84,12 +97,12 @@ public class Menu : MonoBehaviour
 		{
 			GUILayout.BeginHorizontal();
 			{
-				if(GUILayout.Button ("Show FPS"))
+				if(GUILayout.Button ("Toggle Show FPS"))
 				{
 					FPSCounter.toggleFPS = !FPSCounter.toggleFPS;
 				}
 				
-				if (GUILayout.Button ("Main Menu")) 
+				if (GUILayout.Button ("Return to Main Menu")) 
 				{
 					Application.LoadLevel(0);
 				}
@@ -98,26 +111,16 @@ public class Menu : MonoBehaviour
 			
 			GUILayout.BeginVertical("box");
 			{
-				GUILayout.Label("Particle size:"+ Menu.Size);
-				Menu.Size = GUILayout.HorizontalSlider(Menu.Size, 0.2f, 1.0f);
-				
-				GUILayout.Label("Number of Particles:"+ Menu.ParticleResolution * Menu.ParticleResolution);
-				Menu.ParticleResolution = (int)GUILayout.HorizontalSlider(Menu.ParticleResolution, 10, 22);
+				GUILayout.Label("Number of Particles:"+ ParticleResolution * ParticleResolution);
+				ParticleResolution = (int)GUILayout.HorizontalSlider(ParticleResolution, 10, 22);
 			}
 			GUILayout.EndVertical();
 			
 			GUILayout.BeginHorizontal();
 			{
-				if (GUILayout.Button("Apply Changes")) 
+				if (GUILayout.Button("Reload Particles")) 
 				{
 					Application.LoadLevel(Application.loadedLevel);
-				}
-				
-				if (GUILayout.Button ("Default Values")) 
-				{
-					Menu.ParticleResolution = 19;
-					Menu.Viscosity = 1.002f;
-					Menu.Size = 1.0f;
 				}
 			}
 			GUILayout.EndHorizontal();

@@ -8,10 +8,9 @@ public class SPHSystem : MonoBehaviour
 {
 	public List<GameObject> spherelist = new List<GameObject> ();
 	private GameObject sphere;
-	private Boundary bounds;
 	private SPH sph;
 	private FluidParticle fp;
-	private float UpdateTime = 0.06f;
+	private float UpdateTime = 0.05f;
 
 	public SPHSystem()
 	{
@@ -27,11 +26,6 @@ public class SPHSystem : MonoBehaviour
 		StartCoroutine ("DoCalculate");
 	}
 
-	void Update()
-	{
-
-	}
-		
 	private void CreatePoints () 
 	{
 		for (int x = 0; x < Menu.ParticleResolution; x++) 
@@ -40,9 +34,11 @@ public class SPHSystem : MonoBehaviour
 			{
 				sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 				sphere.AddComponent<Rigidbody>();
-				sphere.transform.position = new Vector3((x + transform.position.x) * Menu.Size,transform.position.y, (z + transform.position.z) * Menu.Size);
+				sphere.transform.position = new Vector3((x + (transform.position.x - fp.Size * 2)),transform.position.y, (z + (transform.position.z - fp.Size * 2)));
 				sphere.transform.localScale = new Vector3(Menu.Size,Menu.Size,Menu.Size);
+				sphere.renderer.sharedMaterial= Resources.Load("water", typeof(Material)) as Material;
 				sphere.rigidbody.mass = fp.Mass;
+				sphere.tag = "fluid";
 				spherelist.Add(sphere);
 				sph.CreateFluids(sphere.transform.position);
 			}
@@ -58,7 +54,6 @@ public class SPHSystem : MonoBehaviour
 
 			sph.CalculateDensities (k);
 			sph.particleList [k].UpdatePressure ();
-
 			for (int n =0; n < sph.particleList.Count; n++) 
 			{
 				sph.particleList [n].Position= spherelist[n].transform.position;
@@ -69,11 +64,14 @@ public class SPHSystem : MonoBehaviour
 				{
 					sph.CheckParticleDistance (k, n);
 					sph.CalculateForces (k, n);
+
 					spherelist[k].rigidbody.AddForce(sph.particleList[k].Force);
 					spherelist[n].rigidbody.AddForce(sph.particleList[n].Force);
+					//spherelist[n].rigidbody.velocity += sph.particleList [n].Velocity;
 					spherelist[n].transform.position = sph.particleList [n].Position;
 				}
 			}
+			//spherelist[k].rigidbody.velocity += sph.particleList [k].Velocity;
 			spherelist[k].transform.position = sph.particleList [k].Position;
 		}
 	}

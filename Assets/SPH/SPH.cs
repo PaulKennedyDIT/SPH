@@ -6,7 +6,6 @@ using System;
 public class SPH
 {
 	public List<FluidParticle> particleList;
-	public Boundary bounds;
 	
 	public SmoothingKernel SKPoly6;
 	public SmoothingKernel SKPressure;
@@ -32,14 +31,9 @@ public class SPH
 		SKPoly6 = new Poly6 (fp.Size);
 		SKPressure = new Spiky (fp.Size);
 		SKViscosity = new Viscosity (fp.Size);
-
 	
 		minDist = Menu.Size * 1.1f;
-		
-
 		minDistSq = minDist * minDist;
-
-		bounds = new Boundary ();
 	}
 
 	public void CreateFluids(Vector3 pointPosition)
@@ -57,7 +51,8 @@ public class SPH
 	
 	public void CalculateForces(int indexPart, int indexOther)
 	{
-		//particleList [indexPart].Force = Vector3.zero;
+		particleList [indexPart].Force = Vector3.zero;
+		particleList [indexPart].Velocity = Vector3.zero;
 		if(particleList[indexOther].Density > Mathf.Epsilon && particleList[indexPart] != particleList[indexOther])
 		{
 			distLen = Vector3.Distance(particleList[indexOther].Position,particleList[indexPart].Position);
