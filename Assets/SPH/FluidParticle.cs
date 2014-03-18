@@ -48,13 +48,7 @@ public class FluidParticle
 		Pressure = GasConstant * (Density - DensityOffSet);
 	}
 
-	/** Update Method
-<<<<<<< HEAD
-	 *  Integrates relative to the current Position, Previous Position, Mass, and velocity of a Fluid particle per time delta.
-=======
-	 *  Integration integrates relative to the current Position, Previous Position, Mass, and velocity of a Fluid particle per time delta.
->>>>>>> 3e4401b47e5c491bd7196e7937e98033d7f22514
-	 */
+	//Integrates relative to the current Position, Previous Position, Mass, and velocity of a Fluid particle per time delta.
 	public void Update(float dTime)
 	{
 		Solver.Solve (ref Position, ref PositionOld, ref Velocity, Force, Mass, dTime);
