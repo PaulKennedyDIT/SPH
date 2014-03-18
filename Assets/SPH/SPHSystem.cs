@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public class SPHSystem : MonoBehaviour 
 {
 	public List<GameObject> drawParticleList = new List<GameObject> ();		// Collection of GameObjects used to visually represent each Fluid Particle.
+
 	private GameObject drawParticle;										// GameObject which visually represents each individual Fluid Particle.	
 	private SPH sph;														// Instantiation of Smooth Particle Hydrodynamic object. Performs the SPH calculations.
 	private FluidParticle tempFluidParticle;								// Instantiation of a temporary Fluid Particle Object.
@@ -14,6 +15,8 @@ public class SPHSystem : MonoBehaviour
 																			// Used to determine assign the default values of each Fluid Particle to the Rigid Body visual representation of a fluid particle.
 	private static float UpdateTime = 0.05f;								// Instantiation of the Time Delta used for Updating each particle per time slice.
 
+
+	
 	public SPHSystem()
 	{
 		tempFluidParticle = new FluidParticle ();
@@ -22,10 +25,12 @@ public class SPHSystem : MonoBehaviour
 
 	void Start () 
 	{
+
 		tempFluidParticle.Size = Menu.Size;									// Size of Fluid Particle is assigned based on a value specified from the Menu object.
 		tempFluidParticle.Viscosity = Menu.Viscosity;						// Default Viscosity is defined as 1.002 which is the Viscosity of water at a temperature of 20 degrees celcius.
 		CreateFluidParticle ();												// Method which instansiates a Fluid Particles and assigns the conceptual location of each fluid particle to the visual layer concept.
 		StartCoroutine ("CalculateSPH");									// Initialises a Coroutine to begin the calculation of the SPH forces and distance checking on a set time slice. Used as a performance optimisation.
+
 	}
 
 	/** Create Fluid Particle Method
