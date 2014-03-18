@@ -36,7 +36,7 @@ public class SPH
 		minDistSq = minDist * minDist;
 	}
 
-	public void CreateFluids(Vector3 pointPosition)
+	public void ConceptualFluidParticle(Vector3 pointPosition)
 	{
 		fp = new FluidParticle();
 		fp.Position = pointPosition;
@@ -49,7 +49,7 @@ public class SPH
 		particleList[index].Density += particleList[index].Mass * (float)this.SKPoly6.Calculate(ref dist);
 	}
 	
-	public void CalculateForces(int indexPart, int indexOther)
+	public void CalculateSPHForces(int indexPart, int indexOther)
 	{
 		particleList [indexPart].Force = Vector3.zero;
 		particleList [indexPart].Velocity = Vector3.zero;
@@ -75,7 +75,7 @@ public class SPH
 		}
 	}
 	
-	public void CheckParticleDistance(int indexPart, int indexOther)
+	public void CalculateExternalForces(int indexPart, int indexOther)
 	{
 		if(particleList[indexPart] != particleList[indexOther])
 		{
