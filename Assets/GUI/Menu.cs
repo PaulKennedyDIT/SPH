@@ -6,8 +6,7 @@ public class Menu : MonoBehaviour
 	public static float Viscosity;
 	public static float Size;
 	public static int ParticleResolution;
-
-	// Use this for initialization
+	
 	void Start () 
 	{
 		ParticleResolution = 19;
@@ -22,7 +21,7 @@ public class Menu : MonoBehaviour
 	{
 		if(Application.loadedLevel == 0)
 		{
-			DisplayMainMenu (new Rect (Screen.width / 1.4f * 0.4f, Screen.height / 4.0f, Screen.width / 1.1f * 0.4f, Screen.height));
+			DisplayMainMenu (new Rect (Screen.width / 1.4f * 0.4f, Screen.height / 2.0f, Screen.width / 1.1f * 0.4f, Screen.height));
 		}
 
 		if(Application.loadedLevel == 1 || Application.loadedLevel == 2 || Application.loadedLevel == 3 || Application.loadedLevel == 4 || Application.loadedLevel == 5 || Application.loadedLevel == 6)
@@ -37,12 +36,12 @@ public class Menu : MonoBehaviour
 		{
 			GUILayout.BeginHorizontal();
 			{
-				if (GUILayout.Button("Begin Simulation 1")) 
+				if (GUILayout.Button("Begin Test 1")) 
 				{
 					Application.LoadLevel(1);
 				}
 
-				if (GUILayout.Button("Begin Simulation 2")) 
+				if (GUILayout.Button("Begin Test 2")) 
 				{
 					Application.LoadLevel(2);
 				}
@@ -51,12 +50,12 @@ public class Menu : MonoBehaviour
 
 			GUILayout.BeginHorizontal();
 			{
-				if (GUILayout.Button("Begin Simulation 3"))
+				if (GUILayout.Button("Begin Test 3"))
 				{
 					Application.LoadLevel(3);
 				}
 
-				if (GUILayout.Button("Begin Simulation 4"))
+				if (GUILayout.Button("Begin Test 4"))
 				{
 					Application.LoadLevel(4);
 				}
@@ -65,12 +64,12 @@ public class Menu : MonoBehaviour
 
 			GUILayout.BeginHorizontal();
 			{
-				if (GUILayout.Button("Begin Simulation 5"))
+				if (GUILayout.Button("Begin Test 5"))
 				{
 					Application.LoadLevel(5);
 				}
 
-				if (GUILayout.Button("Begin Simulation 6"))
+				if (GUILayout.Button("Begin Test 6"))
 				{
 					Application.LoadLevel(6);
 				}
@@ -107,7 +106,7 @@ public class Menu : MonoBehaviour
 					FPSCounter.toggleFPS = !FPSCounter.toggleFPS;
 				}
 				
-				if (GUILayout.Button ("Return to Main Menu")) 
+				if (GUILayout.Button ("Main Menu")) 
 				{
 					Application.LoadLevel(0);
 				}
