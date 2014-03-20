@@ -70,14 +70,13 @@ public class SPHSystem : MonoBehaviour
 	 * 	Iterate over every particle (i) in a list of Fluid Particles.
 	 *  Set the Visual Position of each Fluid Particle to be the Conceptal Position for each Particle i
 	 *  Integrate the Particle (i) position to calculate specify the Previous Position of the Particle, the Velocity and Acceleration per time slice.
-	 *  Calculate the Density of the Particle(i).
 	 * 	Update the Pressure of the Particle (i).
+	 *  Calculate the Density of the Particle(i).
 	 * 
 	 * 		Iterate over all of the other Particles in the Particle list (j).
 	 * 		Set the Visual Position of each Fluid Particle (j) to be the Conceptual Position for each Particle (j).
 	 * 		Calculate the distance between the position vectors of particle (j) and the particle (i).
 	 * 		If the Distance between the two position vectors is less than or equal to the Size of a Particle Check
-	 * 			Calculate external forces which pull and  push Fluid particles.
 	 * 			Calculate SPH forces using by calculating Pressure and Viscosity based forces as described by Muller
 	 * 		
 	 * 			Add the applied to each Conceptual Fluid Particle i and j to the Visual Fluid Particle component.
@@ -90,8 +89,9 @@ public class SPHSystem : MonoBehaviour
 			sph.particleList [i].Position= drawParticleList[i].transform.position;
 			sph.particleList [i].Update (UpdateTime);
 
-			sph.CalculateDensities (i);
 			sph.particleList [i].UpdatePressure ();
+			sph.CalculateDensities (i);
+
 			for (int j =0; j < sph.particleList.Count; j++) 
 			{
 				sph.particleList [j].Position= drawParticleList[j].transform.position;
@@ -99,7 +99,6 @@ public class SPHSystem : MonoBehaviour
 
 				if(sph.distLen <= sph.particleList[i].Size)
 				{
-					sph.CalculateExternalForces (i, j);
 					sph.CalculateSPHForces (i, j);
 
 					drawParticleList[i].rigidbody.AddForce(sph.particleList[i].Force);

@@ -15,98 +15,110 @@ public class SPH
 
 	public Vector3 SPHForce;									// Vector representative of the repulsive Pressure and Viscosity forces computed as part of the Smooth Particle Hydrodynamics rule.
 	public Vector3 dist;										// Vector which represents the distance between two Fluid particles. Position of Fluid particle i minus the position of Fluid Particle j.  		
-	
+	public Vector3 SPHVelocity;									// Vector which is contains the Subtraction of Velocity values for the calculation of the the Viscosity SPH Rule.
+
 	public float maxDist;										// Floating point value representative of the maximum distance between Particle i and j at which the calculation of Pressure and Viscosity repulisive and attractive forces are calculated.
 	public float maxDistSq;										// Squared maximum distance value.
-	public float diff;
-	public float scalar;
-	public float distLenSq;										
+	public float scalar;										// Value containing the scalar multiplier for the SPHForce vector.
+	public float SPHPressureSum;								// Contains the Summation of Pressure values from the SPH rules.
 	public float distLen;										// Represents the length of the distance vector. E.g the Magnitude of the vector dist.
 
 	public SPH () 
 	{
 
-		particleList = new List<FluidParticle> ();
-		fp = new FluidParticle ();
-		Poly6 = new Poly6 (fp.Size);
-		Spiky = new Spiky (fp.Size);
-		Viscosity = new Viscosity (fp.Size);
+		particleList = new List<FluidParticle> ();				// Instantiation of the FluidParticle list. Contains all of the Conceptual Fluid Particles within the scene.
+		fp = new FluidParticle ();								// Object representative of each instance of a Fluid Particle.
+		Poly6 = new Poly6 (Menu.Size);							// Instantiation of a Poly6 smoothing Kernel with a smoothing distance set to the size of a Fluid particle.
+		Spiky = new Spiky (Menu.Size);							// Instantiation of a Spiky smoothing Kernel with a smoothing distance set to the size of a Fluid particle.
+		Viscosity = new Viscosity (Menu.Size);					// Instantiation of a Viscosity smoothing Kernel with a smoothing distance set to the size of a Fluid particle.
 	
-		maxDist = Menu.Size * 1.0f;
-		maxDistSq = maxDist * maxDist;
+		maxDist = Menu.Size * 0.5f;								// Maximum distance set to Half the size of a Fluid Particle.
+		maxDistSq = maxDist * maxDist;							// Maximum distance squared.
 	}
 
-	public void ConceptualFluidParticle(Vector3 pointPosition)
+	/**	Conceptual Fluid Particle Method
+	 * 	Creates a Conceptual Fluid Particle.
+	 * 	Method creates a Conceptual Fluid Particle at a specified Position Vector location.
+	 */ 
+	public void ConceptualFluidParticle(Vector3 Position)
 	{
 		fp = new FluidParticle();
-		fp.Position = pointPosition;
+		fp.Position = Position;
 		particleList.Add(fp);
 	}
-	
+
+
+	/** Calculate Densities Method.
+	 * Computes Density through the summation of the Mass * Poly6 Smoothing Kernel.
+	 */ 
 	public void CalculateDensities(int index)
 	{
 		particleList[index].Density = 0.0f;
 		particleList[index].Density += particleList[index].Mass * (float)this.Poly6.Calculate(ref dist);
 	}
-	
+
+	/** Calculate SPH Forces Method
+	 * 	Calculates the Pressure and Viscosity forces which apply attractive and repulsive forces on each Fluid Particle.
+	 *  SPH Equations Utilised:
+	 * f(pressure)i =−∑j(mj * (pi+pj)/(2ρj) * ∇W(ri−rj,h)).
+	 * 
+	 * f(viscosity)i =µ∑j(mj * (vj−vi)/ρj * ∇2 *W(ri−rj,h).
+	 * 
+	 * Algorithm Fundamentals:
+	 * Check if the Density of the fluid particle i is greater than Episilon. 
+	 * And
+	 * Check if the Fluid Particle i is not equal to the Fluid Particle J
+	 * 
+	 * Calculate the length of the Distance Vector between the Fluid Particle I's Position and the Fluid Particle J's Position.
+	 * If the Length of the Distance vector is less than an assigned Max Distance Calculate the SPH Repulsive and attractive forces through the Pressure and Viscosity Rules.
+	 */
 	public void CalculateSPHForces(int indexPart, int indexOther)
 	{
-		particleList [indexPart].Force = Vector3.zero;
-		particleList [indexPart].Velocity = Vector3.zero;
 		if(particleList[indexOther].Density > Mathf.Epsilon && particleList[indexPart] != particleList[indexOther])
 		{
-			distLen = Vector3.Distance(particleList[indexOther].Position,particleList[indexPart].Position);
+			dist = particleList[indexPart].Position - particleList[indexOther].Position;
+			distLen = dist.sqrMagnitude;
 			if(distLen < maxDist)
 			{
 				// Calculate pressure forces
-				scalar = particleList[indexOther].Mass * (particleList[indexPart].Pressure + particleList[indexOther].Pressure) / (2.0f * particleList[indexOther].Density);
-				SPHForce = Spiky.CalculateGradient(ref dist);
-				SPHForce = SPHForce * scalar;
+				SPHForce = CalculateSPHPressure(particleList[indexOther].Mass,particleList[indexPart].Pressure,particleList[indexOther].Pressure,particleList[indexOther].Density,ref dist);
 				particleList[indexPart].Force -= SPHForce;
-				particleList[indexOther].Force += SPHForce;
+				particleList[indexOther].Force -= SPHForce;
 				
 				// Calculate Viscosity based forces
-				scalar   = particleList[indexOther].Mass * (float)this.Viscosity.CalculateLaplacian(ref dist) * Menu.Viscosity * 1.0f / particleList[indexOther].Density;
-				SPHForce = particleList[indexOther].Velocity - particleList[indexPart].Velocity;
-				SPHForce = SPHForce * scalar;
+				SPHForce = CalculateSPHViscosity(particleList[indexOther].Mass,particleList[indexPart].Velocity,particleList[indexOther].Velocity,particleList[indexOther].Density,ref dist);
 				particleList[indexPart].Force += SPHForce;
-				particleList[indexOther].Force -= SPHForce;
+				particleList[indexOther].Force += SPHForce;
 			}
 		}
 	}
-	
-	public void CalculateExternalForces(int indexPart, int indexOther)
+
+	/**	CalculateSPHPressure Method
+	 *  Implementation of the SPH Pressure Rule as defined by Mathias Muller in the paper Particle-Based Fluid Simulation for Interactive Applications (2003).
+	 * 	f(pressure)i =−∑j(mj * (pi+pj)/(2ρj) * ∇W(ri−rj,h)).
+	 * 					  Mass * PressureSum * Smoothing Kernel Gradient
+	 */ 
+	public Vector3 CalculateSPHPressure(float Mass, float IPressure,float JPressure,float Density, ref Vector3 distance)
 	{
-		if(particleList[indexPart] != particleList[indexOther])
-		{
-			dist = particleList[indexOther].Position - particleList[indexPart].Position;
-			distLenSq = dist.sqrMagnitude;
-			
-			if(distLenSq < maxDistSq)
-			{
-				if(distLenSq > Mathf.Epsilon)
-				{
-					distLen = (float)Math.Sqrt((double)distLenSq);
-					dist = dist * 0.5f * (distLen - maxDist)/distLen;
+		SPHPressureSum = (IPressure + JPressure)/ (2.0f * Density);
+		SPHForce = Spiky.CalculateGradient (ref distance);
+		scalar = Mass * SPHPressureSum;
+		SPHForce = SPHForce * scalar;
 
-					particleList[indexOther].Position = particleList[indexOther].Position - dist;
-					particleList[indexOther].PositionOld = particleList[indexOther].PositionOld - dist;
+		return SPHForce;
+	}
 
-					particleList[indexPart].Position = particleList[indexPart].Position + dist;
-					particleList[indexPart].PositionOld = particleList[indexPart].PositionOld + dist;
-				}
-				else
-				{
-					diff = 0.5f * maxDist;
-					particleList[indexOther].Position.x -= diff;
-					particleList[indexOther].Position.y -= diff;
-					particleList[indexOther].Position.z -= diff;
-
-					particleList[indexPart].Position.x  += diff;
-					particleList[indexPart].PositionOld.y += diff;
-					particleList[indexPart].PositionOld.z += diff;
-				}
-			}
-		}
-	}	
+	/** CalculateSPHViscosity Method
+	 * 
+	 * f(viscosity)i =µ∑j(mj * (vj−vi)/ρj * ∇2 W(ri−rj,h)
+	 * 						Mass * Velocity/Density * Smoothing Kernel Laplacian
+	 */ 
+	public Vector3 CalculateSPHViscosity(float Mass,Vector3 IVelocity, Vector3 JVelocity,float Density, ref Vector3 distance)
+	{
+		SPHVelocity = (JVelocity - IVelocity)/ (Density);
+		SPHVelocity = SPHVelocity * Mass * (float)Viscosity.CalculateLaplacian (ref distance);
+		SPHForce = Vector3.Scale(SPHForce,SPHVelocity);
+		
+		return SPHForce;
+	}
 }

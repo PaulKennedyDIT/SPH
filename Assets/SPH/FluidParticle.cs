@@ -19,14 +19,14 @@ public class FluidParticle
 
 	public FluidParticle()
 	{
-		Mass		= 1.0f;				// Default Mass of particle initialised.
+		Mass		= 2.99f * Mathf.Pow(10f,-23f);				// Default Mass of particle initialised.
 		Size 		= 1.0f;				// Default Size of particle initialised.
 		Viscosity 	= 1.002f;			// Default Viscosity Initialised.
 		Position 	= Vector3.zero;		// Default Position of Fluid Particle Initalised to 0,0,0 origin.
 		PositionOld = this.Position;	
 		Velocity	= Vector3.zero;		// Default Velocity of Fluid Particle initialised to 0,0,0.
 		Force 		= Vector3.zero;		// Default Force of Fluid Particle initialised to 0,0,0.
-		Density 	= 1000.0f;			// Default Density of Fluid Particle initialised to 1000
+		Density 	= 998.2071f;			// Default Density of Fluid Particle initialised to 1000
 		GasConstant = 8.3145f;			// Universal Gas Law Constant
 		DensityOffSet = 100.0f;			// Rest Density
 
@@ -41,7 +41,7 @@ public class FluidParticle
 
 	/** Update Pressure Method
 	 * Based on the Pressure calculation detailed by Desbrun.
-	 * Formulae is p=k(ρ−ρ0)
+	 * Formulae based on p=k(ρ−ρ0)
 	 */
 	public void UpdatePressure()
 	{
