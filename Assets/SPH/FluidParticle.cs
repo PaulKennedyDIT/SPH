@@ -13,30 +13,21 @@ public class FluidParticle
 	public float Density;				// Density Of Particle.
 	public float Pressure;				// Pressure of Particle.
 	public float Viscosity;				// Viscosity of Fluid Particle.
-	public Solver Solver;				// Integration Solver for Resolving particle position per time stamp.
 	public float GasConstant;			// Gas Constant for the calculation of pressure.
 	public float DensityOffSet;			// Rest Density as described by Desbrun.
 
 	public FluidParticle()
 	{
-		Mass		= 2.99f * Mathf.Pow(10f,-23f);				// Default Mass of particle initialised.
-		Size 		= 1.0f;				// Default Size of particle initialised.
-		Viscosity 	= 1.002f;			// Default Viscosity Initialised.
-		Position 	= Vector3.zero;		// Default Position of Fluid Particle Initalised to 0,0,0 origin.
-		PositionOld = this.Position;	
-		Velocity	= Vector3.zero;		// Default Velocity of Fluid Particle initialised to 0,0,0.
-		Force 		= Vector3.zero;		// Default Force of Fluid Particle initialised to 0,0,0.
-		Density 	= 998.2071f;			// Default Density of Fluid Particle initialised to 1000
-		GasConstant = 8.3145f;			// Universal Gas Law Constant
-		DensityOffSet = 100.0f;			// Rest Density
-
-
-		/**	Fluid Particle Solver Initialised.
-		* 	Solver integrates the position of a Fluid Particle based on the velocity and Force.
-		* 	Integration integrates based on the current Position, Previous Position, Mass, and velocity of a Fluid particle per time delta.
-		*/
-		Solver = new Solver();			
-		Solver.Dampening = Mathf.Epsilon;
+		Mass		= 2.99f * Mathf.Pow(10f,-23f);	// Default Mass of particle initialised.
+		Size 		= 1.0f;							// Default Size of particle initialised.
+		Viscosity 	= 1.002f;						// Default Viscosity Initialised.
+		Position 	= Vector3.zero;					// Default Position of Fluid Particle Initalised to 0,0,0 origin.
+		PositionOld = this.Position;				// Position of Fluid Particle in the previous time step.
+		Velocity	= Vector3.zero;					// Default Velocity of Fluid Particle initialised to 0,0,0.
+		Force 		= Vector3.zero;					// Default Force of Fluid Particle initialised to 0,0,0.
+		Density 	= 998.2071f;					// Default Density of Fluid Particle initialised to 1000
+		GasConstant = 8.3145f;						// Universal Gas Law Constant
+		DensityOffSet = 100.0f;						// Rest Density
 	}
 
 	/** Update Pressure Method
@@ -47,10 +38,25 @@ public class FluidParticle
 	{
 		Pressure = GasConstant * (Density - DensityOffSet);
 	}
-
-	//Integrates relative to the current Position, Previous Position, Mass, and velocity of a Fluid particle per time delta.
+	
 	public void Update(float dTime)
 	{
-		Solver.Solve (ref Position, ref PositionOld, ref Velocity, Force, Mass, dTime);
+		Integrate (ref Position, ref PositionOld, ref Velocity, Force, Mass, dTime);
+	}
+
+	//Integrate based on the current Position, Previous Position, Mass, and velocity of a Fluid particle per time delta.
+	public void Integrate(ref Vector3 position, ref Vector3 positionOld, ref Vector3 velocity, Vector3 force, float mass, float timeStep) 
+	{
+		Vector3 temp;
+		Vector3 oldPos = position;
+		Vector3 acceleration = force / mass;
+		
+		acceleration = acceleration * (timeStep * timeStep);
+		temp = position - positionOld;
+		temp = temp + acceleration;
+		position = position + temp;
+		positionOld = oldPos;
+		temp = position - positionOld;
+		velocity = temp / timeStep;
 	}
 }

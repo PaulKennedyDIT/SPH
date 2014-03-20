@@ -53,7 +53,6 @@
      <Compile Include="Assets\SPH\SPH.cs" />
      <Compile Include="Assets\SPH\SPHSystem.cs" />
      <Compile Include="Assets\SPH\SmoothingKernel.cs" />
-     <Compile Include="Assets\SPH\Solver.cs" />
      <Compile Include="Assets\SPH\Spiky.cs" />
      <Compile Include="Assets\SPH\Viscosity.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
