@@ -2,6 +2,9 @@
 using System.Collections;
 using System;
 
+/* Spiky Smoothing Kernel
+ * Contains a definition of the Spiky Smoothing kernel including the Gradient and Laplacian of the Spiky function.
+ */
 public class Spiky : SmoothingKernel 
 {
 	
@@ -9,7 +12,10 @@ public class Spiky : SmoothingKernel
 	{
 		this.SmoothingLengthH = SmoothingLength;
 	}
-	
+
+	//	As defined by Debrun and utilised by Mathias Muller et al (2003) - Spiky(r,h) = 15/π*^h6 * (h - r)^3  if 0 <= r <= h then otherwise 0.
+	//	where r = Square Magnitude of Distance Vector.
+	// 		  h = Smoothing Length
 	public override double Calculate(ref Vector3 distance)
 	{
 		this.Scaling = (15.0f/ (Math.PI * Math.Pow(SmoothingLength,6.0d)));
@@ -23,7 +29,11 @@ public class Spiky : SmoothingKernel
 		scalar = SmoothingLength - lengthOfDistance;
 		return (this.Scaling * (scalar * scalar * scalar));
 	}
-	
+
+	// Gradient as derived by Stefan Auer in the paper Realtime particle-based fluid simulation
+	// ∇Spiky(r,h) = -r * (45/π * h^6 * r) * (h - r)^2
+	//				 where r = Square Magnitude of Distance Vector.
+	//					   h = Smoothing Length
 	public override Vector3 CalculateGradient (ref Vector3 distance)
 	{
 		lengthOfDistance = distance.sqrMagnitude;
@@ -39,7 +49,8 @@ public class Spiky : SmoothingKernel
 
 		return new Vector3 (-distance.x * (float)scalar, -distance.y * (float)scalar , -distance.z * (float)scalar);
 	}
-	
+
+	// Laplacian of Spiky function not implemented. Usage not required.
 	public override double CalculateLaplacian(ref Vector3 distance)
 	{
 		throw new NotImplementedException();

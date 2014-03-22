@@ -12,7 +12,7 @@ public class Poly6 : SmoothingKernel
 		this.SmoothingLengthH = SmoothingLength;
 	}
 
-	//	As defined by Mathias Muller et al (2003) - poly6(r,h) = if 0 ≤ r ≤ h  then 315/64*π*(h^9) otherwise 0.
+	//	As defined by Mathias Muller et al (2003) - poly6(r,h) = 315/64*π*(h^9) if 0 ≤ r ≤ h  then  (h^2 - r62) otherwise 0.
 	//	where r = Square Magnitude of Distance Vector.
 	// 		  h = Smoothing Length
 	public override double Calculate(ref Vector3 distance)
