@@ -1,14 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\SPH\FluidParticle.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\SPH\SPHSystem.cs">
     <Files>
-      <File FileName="Assets\SPH\SPHSystem.cs" Line="12" Column="56" />
-      <File FileName="Assets\SPH\SPH.cs" Line="22" Column="64" />
-      <File FileName="Assets\SPH\FluidParticle.cs" Line="26" Column="76" />
-      <File FileName="Assets\SPH\Poly6.cs" Line="64" Column="3" />
-      <File FileName="Assets\SPH\SmoothingKernel.cs" Line="23" Column="58" />
-      <File FileName="Assets\SPH\Spiky.cs" Line="52" Column="3" />
-      <File FileName="Assets\SPH\Viscosity.cs" Line="47" Column="40" />
+      <File FileName="Assets\Code\GUI\FPSCounter.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\GUI\Menu.cs" Line="6" Column="19" />
+      <File FileName="Assets\Code\SPH\FluidParticle.cs" Line="21" Column="66" />
+      <File FileName="Assets\Code\SPH\SPH.cs" Line="32" Column="28" />
+      <File FileName="Assets\Code\SPH\SPHSystem.cs" Line="30" Column="1" />
+      <File FileName="Assets\Code\SPH\SmoothingKernel.cs" Line="13" Column="3" />
+      <File FileName="Assets\Code\SPH\Poly6.cs" Line="70" Column="3" />
+      <File FileName="Assets\Code\SPH\Spiky.cs" Line="21" Column="24" />
+      <File FileName="Assets\Code\SPH\Viscosity.cs" Line="26" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

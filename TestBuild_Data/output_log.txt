@@ -1,25 +1,24 @@
 Initialize engine version: 4.3.4f1 (e444f76e01cd)
 GfxDevice: creating device client; threaded=1
 Direct3D:
-    Version:  Direct3D 9.0c [nvumdshimx.dll 9.18.13.3489]
-    Renderer: Intel(R) HD Graphics Family
-    Vendor:   Intel
-    VRAM:     1972 MB (via DXGI)
+    Version:  Direct3D 9.0c [nvd3dumx.dll 9.18.13.3523]
+    Renderer: NVIDIA GeForce GTX 770
+    Vendor:   NVIDIA
+    VRAM:     1990 MB (via DXGI)
     Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
-Loading C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
-Platform assembly: C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
-Loading C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
-Platform assembly: C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
-Loading C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
-- Completed reload, in  0.052 seconds
-desktop: 1366x768 59Hz; virtual: 1366x768 at 0,0
+Platform assembly: E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+- Completed reload, in  0.417 seconds
+desktop: 1920x1080 60Hz; virtual: 3520x1200 at 0,0
 <RI> Initializing input.
-XInput1_3.dll not found.
 <RI> Input initialized.
-Platform assembly: C:\Users\Paul K\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: E:\PaulDIT\Dropbox\Final Year Project\FYP_SPH_FINAL\TestBuild_Data\Managed\System.Core.dll (this message is harmless)
