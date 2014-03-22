@@ -4,16 +4,6 @@ using System;
 
 public class Spiky : SmoothingKernel 
 {
-	private double lengthOfDistance;
-	private double scalar;
-	private double h2minusr2;
-	private double fac;
-	private double len;
-
-	public Spiky()
-	{
-		
-	}
 	
 	public Spiky(double SmoothingLength)
 	{

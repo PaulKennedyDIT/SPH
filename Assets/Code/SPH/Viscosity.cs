@@ -4,20 +4,6 @@ using System;
 
 public class Viscosity : SmoothingKernel 
 {
-	private double lengthOfDistance;
-	private double lengthOfDistanceSQ;
-	private double lengthOfDistanceCB;
-	private double scalar;
-	private double f;
-	private double fac;
-	private double len;
-	private double len3;
-
-	public Viscosity()
-	{
-		
-	}
-	
 	public Viscosity(double kernelSize)
 	{
 		this.SmoothingLengthH = kernelSize;

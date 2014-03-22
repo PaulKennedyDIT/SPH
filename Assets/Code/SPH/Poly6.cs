@@ -4,10 +4,6 @@ using System;
 
 public class Poly6 : SmoothingKernel
 {
-	private double lengthOfDistanceSQ;
-	private double h2minusr2;
-	private double scalar;
-
 	public Poly6(double SmoothingLength)
 	{
 		this.SmoothingLengthH = SmoothingLength;
