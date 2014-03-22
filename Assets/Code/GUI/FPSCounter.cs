@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/*** Externally Sourced Frames Per Second Display.
+ * 	Source material for implementation located at: http://wiki.unity3d.com/index.php?title=FramesPerSecond
+ *  Implementation is utilised to display the Frames Per Second of the application to the user upon run time.
+ */
 public class FPSCounter : MonoBehaviour 
 {
 

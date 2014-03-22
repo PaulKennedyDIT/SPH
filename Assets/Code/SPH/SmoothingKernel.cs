@@ -2,6 +2,10 @@
 using System.Collections;
 using System;
 
+/** Object representative of SPH Smoothing Kernel
+ * Contains an abstract suite of methods common to Smoothing Kernels.
+ * 
+ */
 public abstract class SmoothingKernel 
 {
 	protected double Scaling;
@@ -21,7 +25,6 @@ public abstract class SmoothingKernel
 			SmoothingLength = value;
 			SmoothingLengthSq = SmoothingLength * SmoothingLength;
 			SmoothingLengthCb = SmoothingLength * SmoothingLength * SmoothingLength;
-			CalculateFactor();
 		}
 	}
 	
@@ -36,8 +39,6 @@ public abstract class SmoothingKernel
 		Scaling = 1.0d;
 		this.SmoothingLengthH = SmoothingLength;
 	}
-	
-	protected abstract void CalculateFactor();
 	
 	public abstract double Calculate(ref Vector3 distance);
 	
