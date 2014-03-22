@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager manager;
 
-	public int ParticleResolution =22;
+	public int ParticleResolution = 15;
 
 	void Awake()
 	{
