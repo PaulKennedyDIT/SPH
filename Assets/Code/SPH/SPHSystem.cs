@@ -27,6 +27,7 @@ public class SPHSystem : MonoBehaviour
 
 	void Start () 
 	{
+		tempFluidParticle.Size = GameManager.manager.ParticleSize;
 		particleNumber =	GameManager.manager.ParticleResolution;			// Number of Particles to be drawn in the scene.
 		CreateFluidParticle ();												// Method which instansiates a Fluid Particles and assigns the conceptual location of each fluid particle to the visual layer concept.
 		StartCoroutine ("CalculateSPH");									// Initialises a Coroutine to begin the calculation of the SPH forces and distance checking on a set time slice. Used as a performance optimisation.
