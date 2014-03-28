@@ -91,11 +91,11 @@ public class SPHSystem : MonoBehaviour
 			sph.particleList [i].Position= drawParticleList[i].transform.position;
 			sph.particleList [i].Update (UpdateTime);
 
-			sph.particleList [i].UpdatePressure ();
-			sph.CalculateDensities (i);
-
 			for (int j =0; j < sph.particleList.Count; j++) 
 			{
+				sph.particleList [i].UpdatePressure ();
+				sph.CalculateDensities (i);
+
 				sph.particleList [j].Position= drawParticleList[j].transform.position;
 				sph.distLen = Vector3.Distance(sph.particleList[i].Position,sph.particleList[j].Position);
 
