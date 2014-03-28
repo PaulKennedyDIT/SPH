@@ -47,16 +47,9 @@ public class FluidParticle
 	//Integrate based on the current Position, Previous Position, Mass, and velocity of a Fluid particle per time delta.
 	public void Integrate(ref Vector3 position, ref Vector3 positionOld, ref Vector3 velocity, Vector3 force, float mass, float timeStep) 
 	{
-		Vector3 temp;
-		Vector3 oldPos = position;
+		positionOld = position;
 		Vector3 acceleration = force / mass;
-		
-		acceleration = acceleration * (timeStep * timeStep);
-		temp = position - positionOld;
-		temp = temp + acceleration;
-		position = position + temp;
-		positionOld = oldPos;
-		temp = position - positionOld;
-		velocity = temp / timeStep;
+		velocity = velocity + acceleration * timeStep;
+		position = position + velocity * timeStep;
 	}
 }
